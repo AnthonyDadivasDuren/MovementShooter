@@ -5,6 +5,8 @@ using System;
 
 public class PlayerMovement : MonoBehaviour {
 
+    
+    
     [Header("References")]
     public Transform playerCam;    // Reference to the player's camera
     public Transform orientation;   // Reference to the object that determines the player's direction
