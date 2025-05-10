@@ -1,5 +1,7 @@
-using System;
 using UnityEngine;
+using System;
+
+
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -8,7 +10,8 @@ public class PlayerMovement : MonoBehaviour {
     public Transform orientation;   // Reference to the object that determines the player's direction
     private Rigidbody _rb;         // Player's rigidbody component
     private CapsuleCollider _cc;   // Player's capsule collider'
-
+    private WallRunning _wallRunning;
+    
     [Header("Look Settings")]
     private float _xRotation;    // Current rotation of the camera along the X-axis
     private float _sensitivity = 50f; // Mouse sensitivity for camera movement
@@ -20,6 +23,9 @@ public class PlayerMovement : MonoBehaviour {
     public float counterMovement = 0.175f;  // How quickly the player stops when no input is given
     public float maxSlopeAngle = 35f;      // Maximum angle the player can walk on
 
+    [Header("Wallrun settings")]
+    public float wallrunSpeed = 1000; // Base movement speed (high value because of force-based movement)
+    
     [Header("Jump Settings")]
     private bool _readyToJump = true;        // Whether the player can currently jump
     private float _jumpCooldown = 0.25f;     // Time between jumps
@@ -41,7 +47,23 @@ public class PlayerMovement : MonoBehaviour {
     public bool grounded; // If the player is grounded
     public LayerMask whatIsGround; // Layer mask to identify the ground
     private float _threshold = 0.01f; // Threshold for movement calculations
-
+   
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        crouching,
+        jumping,
+        sliding,
+        air,
+        wallrunning
+    
+    }
+    public MovementState state;
+    
+    public bool wallrunning;
+    
+        
     // Input state variables
     float _x, _y; // Movement input on the X and Y axes
     bool _jumping, _sprinting, _crouching; // State variables for jump, sprint, crouch actions
@@ -51,6 +73,7 @@ public class PlayerMovement : MonoBehaviour {
     /// </summary>
     void Awake() {
         _rb = GetComponent<Rigidbody>(); // Get the player's rigidbody component
+        _wallRunning = GetComponent<WallRunning>();
     }
 
     /// <summary>
@@ -307,6 +330,15 @@ public class PlayerMovement : MonoBehaviour {
     /// </summary>
     private void StopGrounded() {
         grounded = false;
+    }
+    
+    private void StateHandler() {
+        // Wallrunning overrides all other states
+        if (wallrunning) {
+            state = MovementState.wallrunning;
+            moveSpeed = wallrunSpeed;
+        }
+       
     }
     
     
