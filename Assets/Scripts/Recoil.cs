@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Recoil : MonoBehaviour
 {
+    
+    
     //Rotations 
     private Vector3 currentRotation;
     private Vector3 targetRotation;
