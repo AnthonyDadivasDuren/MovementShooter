@@ -4,6 +4,8 @@ public class WeaponSwitching : MonoBehaviour
 {
     public int selectedWeapon = 0;
     
+    private GrapplingGun grappling;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +35,10 @@ public class WeaponSwitching : MonoBehaviour
 
         if (previousSelectedWeapon != selectedWeapon)
         {
+            if (grappling != null && grappling.IsGrappling())
+            {
+                grappling.StopGrapple();
+            }
             
             SelectWeapon();
             
@@ -46,6 +52,12 @@ public class WeaponSwitching : MonoBehaviour
         {
             bool isSelected = (i == selectedWeapon);
             weapon.gameObject.SetActive(isSelected);
+
+            if (isSelected)
+            {
+                // Try to get a GrapplingGun component from this weapon
+                grappling = weapon.GetComponent<GrapplingGun>();
+            }
 
             i++;
         }
