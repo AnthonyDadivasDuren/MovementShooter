@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour {
     /// </summary>
     private void Update() {
         MyInput(); // Get player input for movement and actions
-        Look(); // Handle camera look rotation
+       
     }
 
     /// <summary>
@@ -220,25 +220,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private float _desiredX;
 
-    /// <summary>
-    /// Handle the player's camera look behavior based on mouse input
-    /// </summary>
-    private void Look() {
-        float mouseX = Input.GetAxis("Mouse X") * _sensitivity * Time.fixedDeltaTime * _sensMultiplier;
-        float mouseY = Input.GetAxis("Mouse Y") * _sensitivity * Time.fixedDeltaTime * _sensMultiplier;
 
-        // Find current look rotation
-        Vector3 rot = playerCam.transform.localRotation.eulerAngles;
-        _desiredX = rot.y + mouseX;
-
-        // Rotate the camera, ensuring no over-rotation
-        _xRotation -= mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-
-        // Perform the camera and player orientation rotations
-        playerCam.transform.localRotation = Quaternion.Euler(_xRotation, _desiredX, 0);
-        orientation.transform.localRotation = Quaternion.Euler(0, _desiredX, 0);
-    }
 
     /// <summary>
     /// Counteract player movement to prevent sliding and unwanted behavior

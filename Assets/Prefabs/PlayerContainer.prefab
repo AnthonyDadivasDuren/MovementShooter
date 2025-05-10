@@ -5384,6 +5384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8953065534565121852}
   - component: {fileID: 8913893853480720594}
+  - component: {fileID: 2007061814898504430}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -5420,6 +5421,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2854661169363426195}
+--- !u!114 &2007061814898504430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4807026330999856219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5516d4d25021844b8b3e09887a7ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCam: {fileID: 5322030041491448001}
+  orientation: {fileID: 4538009822438624835}
+  sensitivity: 50
+  sensMultiplier: 1
 --- !u!1 &5560469171236982999
 GameObject:
   m_ObjectHideFlags: 0
@@ -15372,7 +15389,7 @@ Transform:
   m_GameObject: {fileID: 7123742369559088234}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.46000004, y: -0.21000007, z: 0.92}
+  m_LocalPosition: {x: 0.46000004, y: 0.40800002, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15544,10 +15561,15 @@ MonoBehaviour:
   range: 70
   impactForce: 30
   isAutomatic: 0
+  isKnockBackable: 0
   fireRate: 2.5
   fpsCam: {fileID: 6156429420288629281}
   muzzleFlash: {fileID: 6201136968517922505}
   impactEffect: {fileID: 1025285306637258, guid: 7e38d9d1e69cdbe4bb197a5b9e8281c5, type: 3}
+  playerRb: {fileID: 0}
+  rocketJumpForce: 1000
+  rocketJumpRadius: 5
+  upwardModifier: 1
 --- !u!120 &1924306706226036054
 LineRenderer:
   serializedVersion: 2
@@ -15985,6 +16007,7 @@ MonoBehaviour:
   maxSpeed: 20
   counterMovement: 0.175
   maxSlopeAngle: 35
+  wallrunSpeed: 1000
   jumpForce: 550
   slideForce: 400
   slideCounterMovement: 0.2
@@ -15993,6 +16016,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  state: 0
+  wallrunning: 0
 --- !u!1 &8516565647523763364
 GameObject:
   m_ObjectHideFlags: 0
@@ -16128,10 +16153,15 @@ MonoBehaviour:
   range: 50
   impactForce: 15
   isAutomatic: 1
+  isKnockBackable: 0
   fireRate: 12
   fpsCam: {fileID: 6156429420288629281}
   muzzleFlash: {fileID: 8366313752926106526}
   impactEffect: {fileID: 1025285306637258, guid: 7e38d9d1e69cdbe4bb197a5b9e8281c5, type: 3}
+  playerRb: {fileID: 0}
+  rocketJumpForce: 1000
+  rocketJumpRadius: 5
+  upwardModifier: 1
 --- !u!114 &7618138087692593073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16366,10 +16396,15 @@ MonoBehaviour:
   range: 25
   impactForce: 60
   isAutomatic: 0
+  isKnockBackable: 0
   fireRate: 1
   fpsCam: {fileID: 6156429420288629281}
   muzzleFlash: {fileID: 6466616416284633275}
   impactEffect: {fileID: 1025285306637258, guid: 7e38d9d1e69cdbe4bb197a5b9e8281c5, type: 3}
+  playerRb: {fileID: 0}
+  rocketJumpForce: 1000
+  rocketJumpRadius: 5
+  upwardModifier: 1
 --- !u!114 &2166821356775480458
 MonoBehaviour:
   m_ObjectHideFlags: 0
