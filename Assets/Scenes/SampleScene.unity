@@ -659,6 +659,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!54 &486121698 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 9084599280710602460, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
+  m_PrefabInstance: {fileID: 2551320842919406994}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &729861627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,8 +1944,20 @@ PrefabInstance:
       value: PlayerContainer
       objectReference: {fileID: 0}
     - target: {fileID: 241358519997372374, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
+      propertyPath: playerRb
+      value: 
+      objectReference: {fileID: 486121698}
+    - target: {fileID: 241358519997372374, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
       propertyPath: impactForce
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 241358519997372374, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
+      propertyPath: isKnockBackable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 241358519997372374, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
+      propertyPath: rocketJumpForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1019912539839407910, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1980,6 +1997,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1019912539839407910, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854661169363426195, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854661169363426195, guid: 9d24fd293f4e69849994f2eec97f7a98, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
