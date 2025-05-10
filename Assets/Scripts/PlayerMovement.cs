@@ -12,10 +12,7 @@ public class PlayerMovement : MonoBehaviour {
     private CapsuleCollider _cc;   // Player's capsule collider'
     private WallRunning _wallRunning;
     
-    [Header("Look Settings")]
-    private float _xRotation;    // Current rotation of the camera along the X-axis
-    private float _sensitivity = 50f; // Mouse sensitivity for camera movement
-    private float _sensMultiplier = 1f; // Sensitivity multiplier for fine-tuning
+ 
 
     [Header("Movement Settings")]
     public float moveSpeed = 4500; // Base movement speed (high value because of force-based movement)

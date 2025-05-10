@@ -42,6 +42,7 @@ public class WallRunning : MonoBehaviour
 
     [Header("References")]
     public Transform orientation;
+    public PlayerCamera cam;
     private PlayerMovement pm;
     private Rigidbody rb;
 
@@ -133,7 +134,23 @@ public class WallRunning : MonoBehaviour
         
         wallRunTimer = maxWallRunTime;
         
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        
+        Vector3 vel = rb.linearVelocity;
+
+       
+        
+       rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+       
+       Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
+       Vector3 wallForward = Vector3.Cross(wallNormal, Vector3.up);
+       
+       // Flip direction if backward
+       if ((orientation.forward - wallForward).magnitude > (orientation.forward - -wallForward).magnitude)
+           wallForward = -wallForward;
+
+        // Give a starting push
+       rb.AddForce(wallForward * (wallRunForce * 1.1f), ForceMode.VelocityChange);
+       
     }
 
     private void WallRunningMovement()
