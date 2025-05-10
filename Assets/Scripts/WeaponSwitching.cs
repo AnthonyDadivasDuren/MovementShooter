@@ -33,7 +33,9 @@ public class WeaponSwitching : MonoBehaviour
 
         if (previousSelectedWeapon != selectedWeapon)
         {
+            
             SelectWeapon();
+            
         }
     }
 
@@ -42,11 +44,12 @@ public class WeaponSwitching : MonoBehaviour
         int i = 0;
         foreach (Transform weapon in transform)
         {
-            if (i == selectedWeapon)
-                weapon.gameObject.SetActive(true);
-            else
-                weapon.gameObject.SetActive(false);
+            bool isSelected = (i == selectedWeapon);
+            weapon.gameObject.SetActive(isSelected);
+
             i++;
         }
     }
+
+   
 }

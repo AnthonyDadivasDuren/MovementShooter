@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GrapplingGun : MonoBehaviour {
@@ -78,12 +79,16 @@ public class GrapplingGun : MonoBehaviour {
     /// Stops the grapple action.
     /// Called when the player releases the middle mouse button.
     /// </summary>
-    void StopGrapple()
+    public void StopGrapple()
     {
         // Disable the LineRenderer by setting position count to 0
         _lr.positionCount = 0;
         // Destroy the SpringJoint to detach the player from the grapple point
-        Destroy(_joint);
+        if (_joint != null)
+        {
+            Destroy(_joint);
+            _joint = null;
+        }
     }
 
     /// <summary>
@@ -115,6 +120,11 @@ public class GrapplingGun : MonoBehaviour {
     public Vector3 GetGrapplePoint()
     {
         return _grapplePoint;
+    }
+
+    private void OnDisable()
+    {
+        StopGrapple();
     }
 }
 

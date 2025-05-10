@@ -15541,7 +15541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grappling: {fileID: 5117433989535307981}
   damage: 10
-  range: 100
+  range: 70
   impactForce: 30
   isAutomatic: 0
   fireRate: 2.5
@@ -16125,7 +16125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grappling: {fileID: 7618138087692593073}
   damage: 5
-  range: 100
+  range: 50
   impactForce: 15
   isAutomatic: 1
   fireRate: 12
@@ -16362,8 +16362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappling: {fileID: 2166821356775480458}
-  damage: 20
-  range: 50
+  damage: 30
+  range: 25
   impactForce: 60
   isAutomatic: 0
   fireRate: 1
